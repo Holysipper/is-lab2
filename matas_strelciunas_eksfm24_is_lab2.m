@@ -46,10 +46,10 @@ for i = 1:100000
 
         %sigmoides aktyvavimo funkcija yra 1 / (1 + e^(-x))
         %hiperbolinio tangento aktyvavimo funkcija yra 2/(1+e^(-2x)) - 1
-        for j = 1:4
+        for j = 1:5
             neuronu_iseitys(j) = 1/(1+exp(-sum1(j)));
         end
-        neuronu_iseitys(5) = 2/(1+exp(-2 * sum1(5))) - 1;
+        %neuronu_iseitys(5) = 2/(1+exp(-2 * sum1(5))) - 1;
 
         % Pasverta suma antrame sluoksnyje
         sum2 = 0;
@@ -70,11 +70,11 @@ for i = 1:100000
         % ir hiperbolinio tangento išvestinės
         
         % ciklas apskaiciuoti sigmoidem
-        for j = 1:4
+        for j = 1:5
             pasleptojo_sluoksnio_paklaida(j) = neuronu_iseitys(j) * (1-neuronu_iseitys(j)) * (e * w1x_2(j));
         end
         %tangentoide apskaiciuoju atskirai
-        pasleptojo_sluoksnio_paklaida(5) = (1 - neuronu_iseitys(5)^2) * (e * w1x_2(5)); 
+        %pasleptojo_sluoksnio_paklaida(5) = (1 - neuronu_iseitys(5)^2) * (e * w1x_2(5)); 
         
         % Svorniu atnaujinimas
         for j=1:5
@@ -88,6 +88,9 @@ end
 
 fprintf('Mokymas baigtas, braizome grafika su apmokytais svoriais\r\n')
 
+x = 0.1:0.009:1;
+y = (1 + 0.6 * sin (2 * pi * x / 0.7)) + 0.3 * sin (2 * pi * x) / 2;
+
 for n = 1:length(x)
     
     % Pasverta suma pirmame sluoksnyje
@@ -97,10 +100,10 @@ for n = 1:length(x)
     
     % Aktyvavimo funkcijos
 
-    for j = 1:4
+    for j = 1:5
         neuronu_iseitys(j) = 1/(1+exp(-sum1(j)));
     end
-        neuronu_iseitys(5) = 2/(1+exp(-2 * sum1(5))) - 1;
+        %neuronu_iseitys(5) = 2/(1+exp(-2 * sum1(5))) - 1;
     
     % Pasverta suma antrame sluoksnyje
     
